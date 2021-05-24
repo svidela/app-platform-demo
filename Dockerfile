@@ -1,13 +1,13 @@
 FROM python:3.8-slim
 
-RUN python -m venv /venv && . /venv/bin/activate
+RUN python -m venv /venv
 
 WORKDIR /demo
 COPY . .
 
-RUN pip install --upgrade pip && pip install -r requirements.txt
+RUN . /venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-CMD ["gunicorn", "demo.wsgi"]
+CMD ["/venv/bin/gunicorn", "demo.wsgi"]
