@@ -9,6 +9,6 @@ ENV PATH /venv/bin:$PATH
 WORKDIR /demo
 COPY . .
 
-RUN .  activate && pip install --U pip && pip install -r requirements.txt
+RUN .  activate && pip install -U pip && pip install -r requirements.txt
 
 CMD ["gunicorn", "demo.wsgi"]
