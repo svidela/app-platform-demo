@@ -1,8 +1,15 @@
 FROM python:3.8-slim
 
-WORKDIR /usr/src/app
+RUN groupadd -g 999 demo && \
+    useradd  -m -u 999 -g demo demo
+
+WORKDIR /demo
 
 COPY . .
+
+RUN chown -R demo:demo /demo
+
+USER demo
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
