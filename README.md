@@ -20,7 +20,7 @@ ${DJANGO_SECRET_KEY} ${GUNICORN_WORKERS}' <app-platform.yaml.tpl | doctl apps cr
 ## Update
 
 ```bash
-doctl apps
+doctl apps list
 shdotenv -e .env.dev envsubst '${STATIC_ACCESS_KEY_ID} ${STATIC_SECRET_KEY} ${STATIC_BUCKET_NAME} ${STATIC_ENDPOINT_URL}
 ${DJANGO_SECRET_KEY} ${GUNICORN_WORKERS}' <app-platform.yaml.tpl | doctl apps update <app-id> --spec -
 ```
